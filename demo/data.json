@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "icon": "a1.jpg",
+      "name": "风景1"
+    },
+    {
+      "icon": "a2.jpg",
+      "name": "风景2"
+    },
+    {
+      "icon": "a3.jpg",
+      "name": "风景3"
+    },
+    {
+      "icon": "a4.jpg",
+      "name": "风景4"
+    },
+    {
+      "icon": "a5.jpg",
+      "name": "风景5"
+    },
+    {
+      "icon": "a6.jpg",
+      "name": "风景6"
+    }
+  ]
+}

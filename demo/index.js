@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import Gpage from './Gpage';
 
-AppRegistry.registerComponent('demo', () => App);
+AppRegistry.registerComponent('demo', () => Gpage);

@@ -6,12 +6,11 @@
 
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
   View
 } from 'react-native';
-type Props = {};
+var Props = {};
 export default class USBox extends Component<Props> {
   constructor(props) {
         super(props);
@@ -23,7 +22,7 @@ export default class USBox extends Component<Props> {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          UserBox
+          这是我的页面
         </Text>
       </View>
     );

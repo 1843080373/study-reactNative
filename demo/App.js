@@ -6,27 +6,25 @@
 
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
-  Text,
   View,
   Image
 } from 'react-native';
 import USBox from './USBox';
 import MovieList from './MovieList';
 import TabNavigator from 'react-native-tab-navigator';
-const TAB_NORMAL_1=require('./img/a.jpg');
-const TAB_PRESS_1 =require('./img/a.jpg');
-const TAB_NORMAL_2=require('./img/b.jpg');
-const TAB_PRESS_2=require('./img/b.jpg');
-type Props = {};
+const TAB_NORMAL_1 = require('./img/a.jpg');
+const TAB_PRESS_1 = require('./img/a.jpg');
+const TAB_NORMAL_2 = require('./img/b.jpg');
+const TAB_PRESS_2 = require('./img/b.jpg');
+var Props = {};
 export default class App extends Component<Props> {
   constructor(props) {
         super(props);
         this.state={
             selectedTab:'home',
         }
-    } 
+    }
   render() {
     return (
       <View style={styles.container}>

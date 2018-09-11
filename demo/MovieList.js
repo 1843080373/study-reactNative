@@ -6,12 +6,13 @@
 
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
   View
 } from 'react-native';
-type Props = {};
+var Props;
+Props = {};
+// noinspection JSAnnotator
 export default class MovieList extends Component<Props> {
   constructor(props) {
         super(props);
@@ -23,7 +24,7 @@ export default class MovieList extends Component<Props> {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          MovieList
+          这是电影列表
         </Text>
       </View>
     );
