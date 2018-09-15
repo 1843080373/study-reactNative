@@ -4,7 +4,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     StyleSheet,
     Text,
@@ -14,44 +14,53 @@ import {
     PixelRatio,
     TouchableOpacity
 } from 'react-native';
+import Home from './Home';
 // 引入本地的数据
 const wineArr = require('./wine.json');
-export default class Gpage extends Component{
-  constructor(props) {
+export default class Gpage extends Component {
+    constructor(props) {
         super(props);
-      // 1.创建数据源
-      var ds = new ListView.DataSource({
-          rowHasChanged: (r1, r2) => r1 !== r2
-      });
+        // 1.创建数据源
+        var ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2
+        });
 
-      // 初始状态
-      this.state = {
-          dataSource: ds.cloneWithRows([''])
-      };
+        // 初始状态
+        this.state = {
+            dataSource: ds.cloneWithRows([''])
+        };
     }
+
     componentDidMount() {
         this.setState({
-            dataSource:this.state.dataSource.cloneWithRows(wineArr)
+            dataSource: this.state.dataSource.cloneWithRows(wineArr)
         })
     }
 
-  render() {
-    return (
-        <ListView
-            dataSource={this.state.dataSource}
-            renderRow={this._renderRow}
-        />
-    );
-  }
+    render() {
+        return (
+            <View>
+                <ListView
+                    dataSource={this.state.dataSource}
+                    renderRow={this._renderRow}
+                />
+                <TouchableOpacity onPress={()=>{this.props.navigator.push({
+                    component:Home
+                })}}>
+                    <Text style={{backgroundColor: 'white',height: 20,textAlign: 'center'}}>返回</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
 
-    _renderRow(rowData, sectionID, rowID){
-        return(
+    _renderRow(rowData, sectionID, rowID) {
+        return (
             <TouchableOpacity
                 style={styles.cellViewStyle}
-                onPress={()=>alert('点击了第' + sectionID + '组中的第' + rowID + '行')}
+                onPress={() => {/*alert('点击了第' + sectionID + '组中的第' + rowID + '行')*/}}
             >
                 {/*左边*/}
-                <Image source={require('./img/a6.jpg')} style={styles.cellImgStyle}/>
+                <Image source={{uri: rowData.icon}} style={styles.cellImgStyle}/>
                 {/*右边*/}
                 <View style={styles.rightViewStyle}>
                     <Text
@@ -69,34 +78,35 @@ export default class Gpage extends Component{
 }
 
 const styles = StyleSheet.create({
-    cellViewStyle:{
+    cellViewStyle: {
         borderBottomWidth: 1 / PixelRatio.get(),
-        borderBottomColor:'#ccc',
+        borderBottomColor: '#ccc',
 
         /*主轴的方向*/
-        flexDirection:'row',
-        padding:10
+        flexDirection: 'row',
+        padding: 10,
+        backgroundColor:'white'
     },
 
-    cellImgStyle:{
+    cellImgStyle: {
         width: 90,
         height: 60,
-        resizeMode:'contain'
+        resizeMode: 'contain'
     },
 
-    rightViewStyle:{
-        flex:1,
+    rightViewStyle: {
+        flex: 1,
         // backgroundColor:'red',
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
         marginLeft: 20
     },
 
-    mainTitleStyle:{
+    mainTitleStyle: {
         fontSize: 15,
-        color:'#999'
+        color: '#999'
     },
 
-    subTitleStyle:{
-        color:'red'
+    subTitleStyle: {
+        color: 'red'
     }
 });

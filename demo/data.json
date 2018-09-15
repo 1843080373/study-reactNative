@@ -1,27 +1,27 @@
 {
   "data": [
     {
-      "icon": "a1.jpg",
+      "icon": "a1",
       "name": "风景1"
     },
     {
-      "icon": "a2.jpg",
+      "icon": "a2",
       "name": "风景2"
     },
     {
-      "icon": "a3.jpg",
+      "icon": "a3",
       "name": "风景3"
     },
     {
-      "icon": "a4.jpg",
+      "icon": "a4",
       "name": "风景4"
     },
     {
-      "icon": "a5.jpg",
+      "icon": "a5",
       "name": "风景5"
     },
     {
-      "icon": "a6.jpg",
+      "icon": "a6",
       "name": "风景6"
     }
   ]
