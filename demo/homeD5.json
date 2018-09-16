@@ -1,0 +1,28 @@
+{
+	"dataImgs": [{
+			"shopImage": "a1",
+			"shopSale": "万达广场",
+			"shopName": "服装",
+			"url":"http://m.baidu.com"
+		},
+		{
+			"shopImage": "a2",
+			"shopSale": "商都广场",
+			"shopName": "美食",
+			"url":"http://m.baidu.com"
+		},
+		{
+			"shopImage": "a3",
+			"shopSale": "红光广场",
+			"shopName": "电器",
+			"url":"http://m.baidu.com"
+		},
+		{
+			"shopImage": "a4",
+			"shopSale": "冰峰广场",
+			"shopName": "家具",
+			"url":"http://m.baidu.com"
+		}
+	],
+	"tips": "全部4家"
+}

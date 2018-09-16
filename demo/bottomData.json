@@ -1,0 +1,31 @@
+{
+	"data": [{
+			"title": "假期降价",
+			"titleColor": "yellow",
+			"rightIcon": "good07",
+			"subTitle": "减价销售",
+			"url":"http://m.baidu.com"
+		},
+		{
+			"title": "一帘幽梦",
+			"titleColor": "red",
+			"rightIcon": "good08",
+			"subTitle": "晴日暖汤",
+			"url":"http://m.sougou.com"
+		},
+		{
+			"title": "广告",
+			"titleColor": "blue",
+			"rightIcon": "good05",
+			"subTitle": "温暖一冬",
+			"url":"http://m.caihang.com"
+		},
+		{
+			"title": "电子产品",
+			"titleColor": "green",
+			"rightIcon": "good06",
+			"subTitle": "降价促销",
+			"url":"http://m.taobao.com"
+		}
+	]
+}

@@ -1,0 +1,22 @@
+{
+	"dataLeft": {
+		"img01": "good08",
+		"img02": "good08",
+		"title": "利丰装饰",
+		"price": "¥999",
+		"sale": "满100减去10"
+	},
+	"dataRight": [{
+			"title": "天天特价",
+			"titleColor": "yellow",
+			"rightIcon": "good01",
+			"subTitle": "1元管饱"
+		},
+		{
+			"title": "天天外卖",
+			"titleColor": "red",
+			"rightIcon": "good04",
+			"subTitle": "清凉一夏"
+		}
+	]
+}
