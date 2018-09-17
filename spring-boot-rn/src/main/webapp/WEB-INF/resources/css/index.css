@@ -1,0 +1,28 @@
+.table4_2 table {
+	width:600px;
+	margin:15px 0;
+	border:0;
+}
+.table4_2 th {
+	background-color:#ACF3FF;
+	color:#000000
+}
+.table4_2,.table4_2 th,.table4_2 td {
+	font-size:0.95em;
+	text-align:center;
+	padding:4px;
+	border-collapse:collapse;
+}
+.table4_2 th,.table4_2 td {
+	border: 1px solid #cff8fe;
+	border-width:1px 0 1px 0
+}
+.table4_2 tr {
+	border: 1px solid #cff8fe;
+}
+.table4_2 tr:nth-child(odd){
+	background-color:#e3fbfe;
+}
+.table4_2 tr:nth-child(even){
+	background-color:#fdfdfd;
+}
