@@ -33,7 +33,7 @@ export default class HomeShopImage extends Component<Props> {
     render() {
         return (
             <TouchableOpacity onPress={() =>
-                this.clickItem(this.props.detailUrl)
+                this.clickItem(this.props.detailUrl,this.props.shopSale)
             } activeOpacity={0.5}>
                 <View style={styles.container}>
                     <Image style={styles.imgS} source={{uri: this.props.shopImage}}/>
@@ -44,12 +44,12 @@ export default class HomeShopImage extends Component<Props> {
         );
     }
 
-    clickItem(url){
+    clickItem(url,shopSale){
         if(this.props.detailUrl==null){
             return;
         }else{
             //执行回调函数
-            this.props.popToShopCenter(url);
+            this.props.popToShopCenter(url,shopSale);
         }
     }
 }

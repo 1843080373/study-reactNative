@@ -59,19 +59,19 @@ export default class HomeShopCenter extends Component<Props> {
                                shopSale={data[i].shopSale}
                                shopName={data[i].shopName}
                                detailUrl={data[i].url}
-                               popToShopCenter={(url) => this.popToHomeView(url)}
+                               popToShopCenter={(url,shopSale) => this.popToHomeView(url,shopSale)}
                 />
             );
         }
         return itemArray;
     }
 
-    popToHomeView(url) {
+    popToHomeView(url,shopSale) {
         if (this.props.popToHome == null) {
             return;
         } else {
             //执行回调函数
-            this.props.popToHome(url);
+            this.props.popToHome(url,shopSale);
         }
     }
 }
