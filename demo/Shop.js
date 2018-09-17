@@ -15,7 +15,7 @@ import {
     ScrollView
 } from 'react-native';
 import ShopItem from './ShpItem';
-import LoginPage from "./Fpage";
+
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 var Props;

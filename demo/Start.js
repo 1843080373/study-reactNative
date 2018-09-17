@@ -10,7 +10,7 @@ import {
     Image
 } from 'react-native';
 const start = require('./img/start.jpg');
-import Fpage from './Fpage';
+import Login from './Login';
 var {width,height}=require('Dimensions').get('window');
 var Props;
 Props = {};
@@ -32,9 +32,9 @@ export default class Start extends Component<Props> {
     componentDidMount() {
         setTimeout(()=> {
            this.props.navigator.replace({
-               component:Fpage
+               component:Login
            });
-        },2000);
+        },1000);
     }
 }
 

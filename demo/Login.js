@@ -11,16 +11,24 @@ import {
     Text,
     TextInput,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from 'react-native';
 
 import App from './App';
+
 var Dimensions = require('Dimensions');
+import Register from './Register';
 var {width} = Dimensions.get('window');
-export default class Fpage extends Component {
+export default class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this._onChangeUserName = this._onChangeUserName.bind(this);
+        this._onChangePassword = this._onChangePassword.bind(this);
+        this.state = {
+            userName:'',
+            password:''
+        }
     }
 
     render() {
@@ -33,6 +41,7 @@ export default class Fpage extends Component {
                     placeholder="请输入用户名"
                     clearButtonMode="always"
                     underlineColorAndroid="transparent"
+                    onChangeText={this._onChangeUserName}//输入框改变触发的函数
                     style={styles.inputViewStyle}
                 />
                 <TextInput
@@ -40,7 +49,9 @@ export default class Fpage extends Component {
                     password={true}
                     clearButtonMode="always"
                     underlineColorAndroid="transparent"
+                    onChangeText={this._onChangePassword}//输入框改变触发的函数
                     style={styles.inputViewStyle}
+                    secureTextEntry={true}
                 />
                 {/*登录按钮*/}
                 <TouchableOpacity
@@ -56,26 +67,55 @@ export default class Fpage extends Component {
                     {/*左边*/}
                     <TouchableOpacity
                         onLongPress={() => {
-                            alert('长按事件!!!');
+                            //alert('长按事件!!!');
                         }}
                     >
                         <Text>无法登录</Text>
                     </TouchableOpacity>
                     {/*右边*/}
-                    <TouchableOpacity>
-                        <Text>新用户</Text>
+                    <TouchableOpacity onPress={()=>{
+                        this.props.navigator.push({
+                            component: Register
+                        });
+                    }}>
+                        <Text>去注册</Text>
                     </TouchableOpacity>
                 </View>
                 {/*默认设置*/}
                 <View style={styles.bottomViewStyle}>
                     <Text>其它方式登录:</Text>
-                    <Image source={require('./img/qq.jpg')} style={styles.bottomImgStyle}/>
-                    <Image source={require('./img/wechat.jpg')} style={styles.bottomImgStyle}/>
-                    <Image source={require('./img/weibo.jpg')} style={styles.bottomImgStyle}/>
-                    <Image source={require('./img/baidu.jpg')} style={styles.bottomImgStyle}/>
+                    <TouchableOpacity onPress={() => {
+                    }} activeOpacity={0.5} style={styles.bottomOCStyle}>
+                        <Image source={require('./img/qq.jpg')}  style={styles.bottomImg}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                    }} activeOpacity={0.5} style={styles.bottomOCStyle}>
+                        <Image source={require('./img/wechat.jpg')}  style={styles.bottomImg}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                    }} activeOpacity={0.5} style={styles.bottomOCStyle}>
+                        <Image source={require('./img/weibo.jpg')}  style={styles.bottomImg}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                    }} activeOpacity={0.5} style={styles.bottomOCStyle}>
+                        <Image source={require('./img/baidu.jpg')} style={styles.bottomImg}/>
+                    </TouchableOpacity>
+
                 </View>
             </View>
         );
+    }
+
+    _onChangeUserName(inputData){
+        this.setState({
+           userName:inputData
+        });
+    }
+
+    _onChangePassword(inputData){
+        this.setState({
+            password:inputData
+        });
     }
 
     /**
@@ -83,11 +123,32 @@ export default class Fpage extends Component {
      * @private
      */
     _login() {
-        this.props.navigator.push({
-            component:App
-        });
+        let REQUEST_URL = 'http://bivhfu.natappfree.cc/user/login';
+        let formData = new FormData();
+        formData.append("userName",this.state.userName);
+        formData.append("password",this.state.password);
+        var opts = {
+            method:"POST",
+            body:formData
+        }
+        fetch(REQUEST_URL,opts)
+            .then((response) => {
+                return response.json();
+            })
+            .then((json) => {
+                var code=json.code;
+                if('1000'==code){
+                    this.props.navigator.push({
+                        component: App
+                    });
+                }else{
+                    Alert.alert(json.message);
+                }
+            })
+            .catch((error) => {
+                alert(error)
+            })
     }
-
 }
 
 const styles = StyleSheet.create({
@@ -146,11 +207,14 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
-    bottomImgStyle: {
+    bottomOCStyle: {
+        width: 50,
+        height: 50,
+        marginLeft: 10
+    },
+    bottomImg: {
         width: 40,
         height: 40,
         borderRadius: 20,
-        marginLeft: 10
     }
-
 });

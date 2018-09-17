@@ -11,10 +11,12 @@ import {
     View,
     ScrollView,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from 'react-native';
 import MineItem from './MineItem';
 import MineMiddle from './MineMiddle';
+
 
 var {width} = require('Dimensions').get('window');
 var Props;
@@ -23,7 +25,39 @@ Props = {};
 export default class Mine extends Component<Props> {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            currentUserName: ''
+        }
+    }
+
+    componentDidMount() {
+        let REQUEST_URL = 'http://bivhfu.natappfree.cc/user/main';
+        let formData = new FormData();
+        formData.append("username", "SuperBigLw");
+        formData.append("password", "123456");
+        var opts = {
+            method: "POST",
+            body: formData
+        }
+        fetch(REQUEST_URL, opts)
+            .then((response) => {
+                return response.json();
+            })
+            .then((json) => {
+                var code = json.code;
+                //Alert.alert(json.data);
+                if("1000"==code){
+                    this.setState({
+                        currentUserName:json.data.userName
+                    });
+                }else{
+                    Alert.alert(json.message);
+                }
+
+            })
+            .catch((error) => {
+                alert(error)
+            })
     }
 
     render() {
@@ -36,7 +70,7 @@ export default class Mine extends Component<Props> {
                 <View style={styles.myTop}>
 
                     <Image style={styles.myTopImg} source={require('./img/a1.jpg')}/>
-                    <Text style={styles.myTopText}>拼多多</Text>
+                    <Text style={styles.myTopText}>{this.state.currentUserName}</Text>
                     {this.renderMiddle()}
                 </View>
 
